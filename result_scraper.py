@@ -3,6 +3,9 @@
 import requests
 import bs4
 import re
+import time
+
+time.sleep(1)
 
 dishes = []
 
