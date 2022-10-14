@@ -2,13 +2,20 @@
 # Most frequent word in Strings List
 # Using loop + max() + split() + defaultdict()
 from collections import defaultdict
+import re
+
 
 def token_counter(text):
     list = text
     temp = defaultdict(int)
     for sub in list:
         for wrd in sub.split():
-            temp[wrd] += 1
+            wrd = wrd.lower()
+            hyphen = re.search(r'-', wrd)
+            if hyphen:
+                continue
+            else:
+                temp[wrd] += 1
     # getting max frequency
     # res = max(temp, key=temp.get)
 
