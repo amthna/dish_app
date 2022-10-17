@@ -13,15 +13,15 @@ import time
 f = open('countries.json')
 data = json.load(f)
 for i in data.values():
-  time.sleep(1)
-  try:
-    data = get_dishes(i)
+    time.sleep(1)
+    try:
+        dish_data = get_dishes(i)
 
-    filename = 'dish_dir/' + i + '.json'
+        filename = 'dish_dir/' + i + '.json'
 
-    with open(filename, "w") as outfile:
-        json.dump(data, outfile)
-    data = {}
-  except:
-    data = {}
-    continue
+        with open(filename, "w") as outfile:
+            json.dump(dish_data, outfile)
+        data = {}
+    except:
+        data = {}
+        continue

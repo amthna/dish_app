@@ -10,6 +10,10 @@ import time
 
 
 def get_dishes(country):
+    dishes = []
+    top_hit_tokens_list = []
+    traditional_top_dish_list = {}
+
     nation = country
     time.sleep(1)
     # not a bot ;)
@@ -40,14 +44,14 @@ def get_dishes(country):
     # links =  soup.find_all(('.yuRUbf a')['href'])
     # dish_results = soup.find_all("div", class_="yuRUbf")
 
-    dishes = []
+
 
     # Iterate through the object 
     # and print it as a string.
     for dish in dish_results:
         link = dish.find_parent("a")
-
-        url = re.search(r'url=(.*?)&amp', str(link)).group(1)
+        # print(str(link))
+        url = re.search(r'url\?q=(.*?)&amp', str(link)).group(1)
         # print(url)
         # print(dish.getText())
         # print("------")
@@ -60,7 +64,7 @@ def get_dishes(country):
 
     tokens = token_counter(dishes)
 
-    common_tokens_to_exclude = ["food", "foods", "most", "popular", "con", "de", "del", "with", "you", "for", "seafood", "must", "try", "a", "to", "and", "-", "slow", "love", "dishes", "flavorful", "even", "better", "fun", "add", "in", "easy", "amazing", "that", "the"]
+    common_tokens_to_exclude = ["food", "&", "foods", "most", "popular", "con", "de", "del", "with", "you", "for", "seafood", "must", "try", "a", "to", "and", "-", "slow", "love", "dishes", "flavorful", "even", "better", "fun", "add", "in", "easy", "amazing", "that", "the"]
 
     top_dishes = {}
 
@@ -83,7 +87,7 @@ def get_dishes(country):
 
     # print(sort_list)
 
-    top_hit_tokens_list = []
+
 
     i = 0
     c = 0
@@ -103,7 +107,7 @@ def get_dishes(country):
     # print(dishes)
     # print(top_hit_tokens_list)
 
-    traditional_top_dish_list = {}
+
 
     for token in top_hit_tokens_list:
       traditional_top_dish_list[token] = []
