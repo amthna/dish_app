@@ -9,8 +9,8 @@ export const DirectoryPage = () => {
     return (
         <>
         <article>
-            <h2>Directory</h2>
-            <p>Select a nation to explore cuisine</p>
+            <h1>Directory</h1>
+            <h2>Select a nation to explore its most popular traditional dishes, or <a href="https://www.w3schools.com">discover a random dish.</a></h2>
           
             </article>
 

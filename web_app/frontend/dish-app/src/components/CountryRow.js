@@ -5,7 +5,8 @@ import DishTable from'./DishTable';
 function CountryRow({ country }) {
     return (
         <Collapse country={country}>
-            <h1>Here are {country.name}'s most popular traditional dishes:</h1>
+            <h2>Here are {country.name}'s most popular traditional dishes</h2>
+            <h3>Select a recipe to view its unique flavors and cooking methods.</h3>
             <DishTable />
         </Collapse>
 

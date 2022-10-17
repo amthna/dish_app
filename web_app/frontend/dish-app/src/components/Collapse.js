@@ -8,10 +8,10 @@ const Collapse = ({ collapsed, children, country }) => {
           className="collapse-button"
           onClick={() => setIsCollapsed(!isCollapsed)}
         >
-          {isCollapsed ? '' : 'Hide'} {country.name}
+          {isCollapsed ? 'Hide' : ''} {country.name}
         </button>
         <div
-          className={`collapse-content ${isCollapsed ? 'collapsed' : 'expanded'}`}
+          className={`collapse-content ${isCollapsed ? 'expanded' : 'collapsed'}`}
           aria-expanded={isCollapsed}
         >
           {children}

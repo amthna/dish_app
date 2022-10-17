@@ -27,12 +27,18 @@ function App() {
           <Navigation />
 
           <main>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
           <Route path="/directory">
               <DirectoryPage />
             </Route>
             <Route path="/dish_detail">
               <DishDetail />
             </Route>
+
+            
+            
           </main>
 
           <footer>
