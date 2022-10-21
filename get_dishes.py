@@ -64,7 +64,7 @@ def get_dishes(country):
 
     tokens = token_counter(dishes)
 
-    common_tokens_to_exclude = ["food", "&", "foods", "most", "popular", "con", "de", "del", "with", "you", "for", "seafood", "must", "try", "a", "to", "and", "-", "slow", "love", "dishes", "flavorful", "even", "better", "fun", "add", "in", "easy", "amazing", "that", "the"]
+    common_tokens_to_exclude = ["food", "things", "world", "all", "&", "foods", "most", "popular", "con", "de", "del", "with", "you", "for", "seafood", "must", "try", "a", "to", "and", "-", "slow", "love", "dishes", "flavorful", "even", "better", "fun", "add", "in", "easy", "amazing", "that", "the"]
 
     top_dishes = {}
 
@@ -109,14 +109,20 @@ def get_dishes(country):
 
 
 
+    # for token in top_hit_tokens_list:
+    #   traditional_top_dish_list[token] = []
+    traditional_top_dish_list["nation"] = nation
+    i = 1
     for token in top_hit_tokens_list:
-      traditional_top_dish_list[token] = []
+      traditional_top_dish_list[str(i)] = token
+      i += 1
 
-    for token in top_hit_tokens_list:
-      for dish in dishes:
-        dish = dish.lower()
-        if token in dish:
-          traditional_top_dish_list[token].append(dish)
+    # this bit searches for recipes, gonna comment out whilst cleaning up scrape terms:
+    # for token in top_hit_tokens_list:
+    #   for dish in dishes:
+    #     dish = dish.lower()
+    #     if token in dish:
+    #       traditional_top_dish_list[token].append(dish)
           
-    print(nation, ":  ", top_hit_tokens_list)
+    # print(nation, ":  ", top_hit_tokens_list)
     return traditional_top_dish_list

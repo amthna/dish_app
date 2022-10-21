@@ -9,19 +9,17 @@ from result_scraper import result_scrape
 from token_counter import token_counter
 from get_dishes import get_dishes
 import time
+import pymongo
+
+myclient = pymongo.MongoClient("mongodb+srv://kooladmin:rnrMYhiEtPoRzl7X@cluster0.lrohczl.mongodb.net/?retryWrites=true&w=majority")
+mydb = myclient["dish_app_db"]
+mycol = mydb["countries"]
 
 f = open('countries.json')
 data = json.load(f)
 for i in data.values():
     time.sleep(1)
-    try:
-        dish_data = get_dishes(i)
 
-        filename = 'dish_dir/' + i + '.json'
+    dish_dict = get_dishes(i)
 
-        with open(filename, "w") as outfile:
-            json.dump(dish_data, outfile)
-        data = {}
-    except:
-        data = {}
-        continue
+    x = mycol.insert_one(dish_dict)
